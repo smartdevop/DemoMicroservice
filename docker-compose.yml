@@ -77,7 +77,7 @@ services:
         max-size: 1m
     networks: 
       - db
-#----- REST API Blog powered by ASP.net MVC Core
+#----- REST API powered by Python
   api_automation:
     container_name: 'api_automation'
     build: 
