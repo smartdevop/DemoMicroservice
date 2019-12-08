@@ -1,10 +1,11 @@
-# Demo hệ thống Microservice
+# Demo hệ thống Microservice by Ho Thi Thuy Ha - Pham Xuan Luc
 
 Hệ thống sẽ gồm có các container như sau:
 1. Nginx đóng vai trò reverse proxy, host: api_gateway
 2. Node.js REST, host api_customer, phục vụ ở cổng 8000, kết nối vào CSDL Mongo DB
 3. Golang REST, host api_book, phục vụ ở cổng 8001, kết nối vào CSDL Postgresql host go_db
-4. ASP.net MVC Core REST, host course,cổng 8002 kết nối vào CSDL Microsoft SQL Server 2017, host 
+4. ASP.net MVC Core REST, host course,cổng 8002 kết nối vào CSDL Microsoft SQL Server 2017, host
+5. Python Automation Test, host api_automation, cổng 8003 
 
 ```
                            +-----------------+           +-------------+
@@ -22,8 +23,14 @@ Hệ thống sẽ gồm có các container như sau:
                  |         +-----------------+           +-------------+
                  |/blog/   |                 |           |             |
                  +--------->  Asp.net:8002   +----------->  MS-SQL2017 |
-                           |                 |           |             |
-                           +-----------------+           +-------------+
+                 |         |                 |           |             |
+                 |         +-----------------+           +-------------+
+                 |
+                 |         +-----------------+
+                 |         |                 |
+                 +--------->  Python: 8003   |
+              /automation/ |                 |
+                           +-----------------+
                                     X
  +------+proxy: network+-----------+X+----------+db: network+----------+
                                     X
@@ -42,9 +49,9 @@ Git Repo
    |
    +---+book
    |
-   +---+course
+   +---+blog
    |
-   +---+documents
+   +---+automation
    |
    +---+docker-compose.yml
 ```
@@ -54,7 +61,7 @@ Git Repo
 Đầu tiên bạn phải clone mã nguồn về đã. Nhớ là chúng tôi code trên Mac và Linux, nên không dám đảm bảo code, hướng dẫn chạy ổn trên Windows không. Nhưng mà chắc là chạy được đó!
 
 ```
-git clone https://github.com/TechMaster/DemoMicroservice.git
+git clone https://github.com/smartdevop/DemoMicroservice.git
 docker-compose up -d
 ```
 Lệnh trên sẽ khởi động gateway và các REST service.
